@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9edf18797a80447bbb0052eeaaae90, type: 3}
+  m_Name: Darkness_23
+  m_EditorClassIdentifier: 
+  quality: {fileID: 11700000, guid: 10cd8cbbf36872149a4d93ad23d6ee4c, type: 2}
+  performance: {fileID: 11700000, guid: 8f596f03a88a72e4eb93c0f0fb62f98d, type: 2}

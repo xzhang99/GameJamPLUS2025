@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9edf18797a80447bbb0052eeaaae90, type: 3}
+  m_Name: Halloween_162
+  m_EditorClassIdentifier: 
+  quality: {fileID: 11700000, guid: 4eab7be6e2990c3479ff1bfbe0b4f90c, type: 2}
+  performance: {fileID: 11700000, guid: 517a8f949d2df8a408f858ba47fd5a37, type: 2}

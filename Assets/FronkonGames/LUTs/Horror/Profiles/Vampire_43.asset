@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9edf18797a80447bbb0052eeaaae90, type: 3}
+  m_Name: Vampire_43
+  m_EditorClassIdentifier: 
+  quality: {fileID: 11700000, guid: a215f5bab6bd6a94ab9702e740a13e9a, type: 2}
+  performance: {fileID: 11700000, guid: b3bcea03341a85f42a726ba28f9dc7fe, type: 2}

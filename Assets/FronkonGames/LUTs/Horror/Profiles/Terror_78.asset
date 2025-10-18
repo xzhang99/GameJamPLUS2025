@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9edf18797a80447bbb0052eeaaae90, type: 3}
+  m_Name: Terror_78
+  m_EditorClassIdentifier: 
+  quality: {fileID: 11700000, guid: 76e833e4f9ea2b146907160d17bee3eb, type: 2}
+  performance: {fileID: 11700000, guid: 7ddac0b1561076843bacf34b039444d8, type: 2}
