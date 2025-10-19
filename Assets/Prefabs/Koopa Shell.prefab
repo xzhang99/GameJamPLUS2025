@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2202651472544236962
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.2279925
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.70203865
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -70.398155
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.67275214
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.008126853
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7397693
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.008936898
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1.384
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 95.433
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      propertyPath: m_Name
+      value: Koopa Shell
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b661d7488a430c24faf2d891c5e14fb6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3850071757244621107}
+  m_SourcePrefab: {fileID: 100100000, guid: b661d7488a430c24faf2d891c5e14fb6, type: 3}
+--- !u!1 &1319565728834173171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b661d7488a430c24faf2d891c5e14fb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2202651472544236962}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3850071757244621107
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319565728834173171}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5541688, y: 0.7890661, z: 1.8798779}
+  m_Center: {x: -0.0007830263, y: 0.2985518, z: 0.10307878}
