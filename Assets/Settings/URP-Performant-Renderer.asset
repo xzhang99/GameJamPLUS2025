@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0a99c31225161408935f51a584de21, type: 3}
   m_Name: Horror
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     intensity: 1
     mode: 1
