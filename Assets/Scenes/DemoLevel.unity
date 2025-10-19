@@ -15864,7 +15864,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4283996053196485263, guid: 38aeee6d3bb7792498ec9c94b06178d9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1588834650}
   m_SourcePrefab: {fileID: 100100000, guid: 38aeee6d3bb7792498ec9c94b06178d9, type: 3}
 --- !u!1001 &1431720950
 PrefabInstance:
@@ -17327,6 +17331,19 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1431073154}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1588834650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588834646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4691e17e8d1a67846bc69fa1d8f4b069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuSceneName: Menu
 --- !u!1001 &1593799622
 PrefabInstance:
   m_ObjectHideFlags: 0
