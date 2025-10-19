@@ -97,3 +97,7 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+Assets/Art/Global Volume Profile/Global Volume Profile.asset
+Assets/Settings/URP-Balanced-Renderer.asset
+Assets/Settings/URP-HighFidelity-Renderer.asset
+Assets/Settings/URP-Performant-Renderer.asset

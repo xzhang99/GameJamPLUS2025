@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0a99c31225161408935f51a584de21, type: 3}
   m_Name: Horror
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     intensity: 1
     mode: 1
-    profile: {fileID: 11400000, guid: adcc95958efd0494ca0d487b099845a4, type: 2}
+    profile: {fileID: 11400000, guid: deaabd547800d5b4bb15829d81d26bb0, type: 2}
     enableColorGrading: 1
-    tonemap: 0
-    exposure: 0
-    contrast: -61.5
+    tonemap: 2
+    exposure: 0.45
+    contrast: 39.2
     tint: {r: 0.9386792, g: 0.31447282, b: 0.14611517, a: 1}
-    hue: -4
-    saturation: 32.4
-    whiteTemperature: -4.3
-    whiteTint: 0
-    splitToningShadows: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    hue: 6
+    saturation: -23.7
+    whiteTemperature: 13.8
+    whiteTint: -53.8
+    splitToningShadows: {r: 0.740566, g: 0.740566, b: 0.740566, a: 1}
     splitToningHighlights: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    splitToningBalance: 0
+    splitToningBalance: -24.4
     channelMixerRed: {x: 1, y: 0, z: 0}
     channelMixerGreen: {x: 0, y: 1, z: 0}
     channelMixerBlue: {x: 0, y: 0, z: 1}
@@ -36,13 +36,13 @@ MonoBehaviour:
     midtones: {r: 1, g: 1, b: 1, a: 1}
     highlights: {r: 1, g: 1, b: 1, a: 1}
     shadowsStart: 0
-    shadowsEnd: 0.29999948
-    highlightsStart: 0.55
-    highLightsEnd: 1
+    shadowsEnd: 0.2999996
+    highlightsStart: 0
+    highLightsEnd: 0.45000014
     affectSceneView: 1
     enableProfiling: 0
     filterMode: 1
-    whenToInsert: 550
+    whenToInsert: 350
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
