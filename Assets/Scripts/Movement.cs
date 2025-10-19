@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private float f_jumpHeight;
     [SerializeField] private float f_maxSpeed;
+    [SerializeField] private float f_sprintSpeed;
     [SerializeField] private float f_acceleration;
     [SerializeField] private float f_freeFallAcceleration;
     [SerializeField] private float f_drag;
@@ -50,6 +51,8 @@ public class Movement : MonoBehaviour
 
         if(_isGrounded)
         {
+            float maxSpeed = _controls.PlayerInputs.Sprint.IsPressed() ? f_sprintSpeed : f_maxSpeed;
+
             _rigidbody.drag = f_drag;
 
             _rigidbody.AddForce(GetMovementInput() * f_acceleration * Time.deltaTime, ForceMode.Force);
@@ -57,11 +60,15 @@ public class Movement : MonoBehaviour
             Vector3 flatvel = _rigidbody.velocity;
             flatvel.y = 0;
 
-            if(flatvel.magnitude > f_maxSpeed)
+            Debug.Log(flatvel.magnitude);
+
+            if(flatvel.magnitude > maxSpeed)
             {
-                flatvel = flatvel.normalized * f_maxSpeed;
+                flatvel = flatvel.normalized * maxSpeed;
 
                 _rigidbody.velocity = new(flatvel.x, _rigidbody.velocity.y, flatvel.z);
+
+                Debug.Log("Cap");
             }
         }
         else
