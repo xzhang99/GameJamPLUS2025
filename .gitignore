@@ -101,3 +101,5 @@ Assets/Art/Global Volume Profile/Global Volume Profile.asset
 Assets/Settings/URP-Balanced-Renderer.asset
 Assets/Settings/URP-HighFidelity-Renderer.asset
 Assets/Settings/URP-Performant-Renderer.asset
+ProjectSettings/ProjectVersion.txt
+Assets/Prefabs/FreeLook Camera.prefab.meta
