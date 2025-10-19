@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.24000977, g: 0.3160377, b: 0.27890778, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.02
+  m_FogDensity: 0.009
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.0990566, g: 0.13207549, b: 0.1981132, a: 1}
@@ -18910,6 +18910,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_castle_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3438092107665297739, guid: abd0963097679a24285566429e21a0cb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f0b77a2492cae4458e5b46c4244a6cc, type: 2}
+    - target: {fileID: 6012849440225958331, guid: abd0963097679a24285566429e21a0cb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f0b77a2492cae4458e5b46c4244a6cc, type: 2}
+    - target: {fileID: 8870309436130409835, guid: abd0963097679a24285566429e21a0cb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2f0b77a2492cae4458e5b46c4244a6cc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
