@@ -2138,40 +2138,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2877899009582402603, guid: 38aeee6d3bb7792498ec9c94b06178d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -290
-      objectReference: {fileID: 0}
-    - target: {fileID: 3294263919084977431, guid: 38aeee6d3bb7792498ec9c94b06178d9,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 48
-      objectReference: {fileID: 0}
     - target: {fileID: 4283996053196485263, guid: 38aeee6d3bb7792498ec9c94b06178d9,
         type: 3}
       propertyPath: m_Name
       value: EndGamePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6821666746273595091, guid: 38aeee6d3bb7792498ec9c94b06178d9,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -424.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 6821666746273595091, guid: 38aeee6d3bb7792498ec9c94b06178d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -212.195
-      objectReference: {fileID: 0}
-    - target: {fileID: 8338195249274543598, guid: 38aeee6d3bb7792498ec9c94b06178d9,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -428.07007
-      objectReference: {fileID: 0}
-    - target: {fileID: 8338195249274543598, guid: 38aeee6d3bb7792498ec9c94b06178d9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 214.03497
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
