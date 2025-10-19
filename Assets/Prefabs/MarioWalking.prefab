@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1583938395107586721
+--- !u!1001 &1499343752726510705
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -58,10 +58,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8235012623513564525, guid: f91840b655d17834a94c2a1ff6b404d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 696439517890e0c4083e1a122e2d086a, type: 2}
     - target: {fileID: 919132149155446097, guid: f91840b655d17834a94c2a1ff6b404d0,
         type: 3}
       propertyPath: m_Name
-      value: MarioWalking
+      value: MarioWalking 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70,22 +75,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f91840b655d17834a94c2a1ff6b404d0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5531177989942590049}
+      addedObject: {fileID: 2673170398032881218}
   m_SourcePrefab: {fileID: 100100000, guid: f91840b655d17834a94c2a1ff6b404d0, type: 3}
---- !u!1 &1817816277485375472 stripped
+--- !u!1 &1733838452538720544 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f91840b655d17834a94c2a1ff6b404d0,
     type: 3}
-  m_PrefabInstance: {fileID: 1583938395107586721}
+  m_PrefabInstance: {fileID: 1499343752726510705}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &5531177989942590049
+--- !u!95 &2673170398032881218
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817816277485375472}
+  m_GameObject: {fileID: 1733838452538720544}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 0a67d600ef93a5a44af30bd252cf57c6, type: 2}
