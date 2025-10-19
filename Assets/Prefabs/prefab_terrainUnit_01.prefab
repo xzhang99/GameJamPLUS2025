@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9069110613247010681}
+  - component: {fileID: 9033162751411847998}
   m_Layer: 0
   m_Name: prefab_terrainUnit_01
   m_TagString: Untagged
@@ -33,6 +34,27 @@ Transform:
   - {fileID: 6356422243657332896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &9033162751411847998
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653617799238967178}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.8349981, y: 0.79401016, z: 2.8977602}
+  m_Center: {x: -0.49445128, y: -0.29198217, z: 0.11271107}
 --- !u!1001 &5338873433555498167
 PrefabInstance:
   m_ObjectHideFlags: 0
