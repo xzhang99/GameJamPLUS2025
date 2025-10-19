@@ -51,6 +51,8 @@ public class Movement : MonoBehaviour
 
         if(_isGrounded)
         {
+            _hasDoubleJump = true;
+
             float maxSpeed = _controls.PlayerInputs.Sprint.IsPressed() ? f_sprintSpeed : f_maxSpeed;
 
             _rigidbody.drag = f_drag;
@@ -109,7 +111,19 @@ public class Movement : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        _rigidbody.velocity = new(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
-        _rigidbody.AddForce(Vector3.up * f_jumpHeight, ForceMode.Impulse);    
+        if(_isGrounded || _kayoteTime > 0)
+        {
+            _rigidbody.velocity = new(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+            _rigidbody.AddForce(Vector3.up * f_jumpHeight, ForceMode.Impulse);
+            return;
+        }
+        
+        if(_hasDoubleJump)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.AddForce(GetMovementInput().normalized * (f_maxSpeed / 4) + Vector3.up * f_jumpHeight, ForceMode.Impulse);
+
+            _hasDoubleJump = false;
+        }
     }
 }
