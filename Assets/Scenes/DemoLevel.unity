@@ -10438,7 +10438,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: prefab_prop_brickblock_01 (13)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
