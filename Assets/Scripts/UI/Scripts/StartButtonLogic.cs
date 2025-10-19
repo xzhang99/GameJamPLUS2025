@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class StartButtonLogic : MonoBehaviour
 {
-    public string sceneToLoad = "TestMainScene";
+    public string sceneToLoad = "Temp_testLighting";
     [SerializeField] MenuButtonController menuButtonController;
     [SerializeField] int thisIndex;
 
