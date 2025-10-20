@@ -5,28 +5,29 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float f_jumpHeight;
-    [SerializeField] private float f_maxSpeed;
-    [SerializeField] private float f_sprintSpeed;
-    [SerializeField] private float f_acceleration;
-    [SerializeField] private float f_freeFallAcceleration;
-    [SerializeField] private float f_drag;
-    [SerializeField] private float f_maxFallSpeed;
-    [SerializeField, Range(0, 1)] private float f_airControlMultiplier;
+    [SerializeField] private float f_jumpHeight = 5f;
+    [SerializeField] private float f_maxSpeed = 7f;
+    [SerializeField] private float f_sprintSpeed = 10f;
+    [SerializeField] private float f_acceleration = 50f;
+    [SerializeField] private float f_deceleration = 60f; // 新增：减速力
+    [SerializeField] private float f_freeFallAcceleration = 20f;
+    [SerializeField] private float f_drag = 6f;
+    [SerializeField] private float f_maxFallSpeed = 30f;
+    [SerializeField, Range(0, 1)] private float f_airControlMultiplier = 0.3f;
     [Space]
-    [SerializeField, Range(0, 1)] private float f_maxKayoteTimeMS;
+    [SerializeField, Range(0, 1)] private float f_maxKayoteTimeMS = 0.2f;
     [Space]
     [SerializeField] private LayerMask f_groundLM;
     [SerializeField] private Transform f_orientation;
     [SerializeField] private Transform f_feet;
     [SerializeField] private Transform f_head;
-    [SerializeField, Min(0)] private float f_rayDistance;
+    [SerializeField, Min(0)] private float f_rayDistance = 0.2f;
 
     [Header("Animation")]
     [SerializeField] private Animator characterAnimator;
 
     private bool _isGrounded;
-    private bool _wasGrounded; // 上一帧的地面状态
+    private bool _wasGrounded;
     private bool _hasDoubleJump;
     private bool _isJumping;
     private float _kayoteTime;
@@ -34,7 +35,7 @@ public class Movement : MonoBehaviour
     private Rigidbody _rigidbody;
     private bool hasAnimator;
     private float _jumpStartTime;
-    private Vector3 _lastVelocity; // 记录上一帧的速度
+    private Vector2 _currentMoveInput;
 
     private void Awake()
     {
@@ -48,6 +49,10 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+
+        // 改进刚体设置以减少滑动
+        _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+        _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
         if (characterAnimator == null)
         {
@@ -74,24 +79,24 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        _wasGrounded = _isGrounded; // 保存上一帧的地面状态
+        _wasGrounded = _isGrounded;
         _isGrounded = CheckIfGrounded();
 
-        // 只有在真正从空中落到地面时才重置跳跃状态
+        // 读取输入
+        _currentMoveInput = _controls.PlayerInputs.Move.ReadValue<Vector2>();
+
         if (!_wasGrounded && _isGrounded)
         {
-            // 添加一个小的延迟确保物理系统稳定
             Invoke(nameof(ResetJumpState), 0.1f);
         }
 
         UpdateAnimations();
-        HandleMovement();
         HandleJumpState();
     }
 
     private void FixedUpdate()
     {
-        _lastVelocity = _rigidbody.velocity; // 记录速度用于调试
+        HandleMovement();
     }
 
     private void ResetJumpState()
@@ -105,23 +110,15 @@ public class Movement : MonoBehaviour
     {
         if (!hasAnimator) return;
 
-        Vector2 moveInput = _controls.PlayerInputs.Move.ReadValue<Vector2>();
-        bool isMoving = moveInput.magnitude > 0.1f;
+        bool isMoving = _currentMoveInput.magnitude > 0.1f;
 
         characterAnimator.SetBool("IsWalking", isMoving && _isGrounded && !_isJumping);
         characterAnimator.SetBool("IsJumping", _isJumping);
-
-        // 调试信息
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log($"Grounded: {_isGrounded}, Jumping: {_isJumping}, Moving: {isMoving}, Velocity: {_rigidbody.velocity}");
-        }
     }
 
     private void HandleMovement()
     {
-        Vector2 moveInput = _controls.PlayerInputs.Move.ReadValue<Vector2>();
-        bool isTryingToMove = moveInput.magnitude > 0.1f;
+        bool isTryingToMove = _currentMoveInput.magnitude > 0.1f;
 
         if (_isGrounded)
         {
@@ -130,12 +127,37 @@ public class Movement : MonoBehaviour
             float maxSpeed = _controls.PlayerInputs.Sprint.IsPressed() ? f_sprintSpeed : f_maxSpeed;
             _rigidbody.drag = f_drag;
 
+            Vector3 moveDirection = GetMovementInput();
+
             if (isTryingToMove)
             {
-                Vector3 movement = GetMovementInput() * f_acceleration * Time.deltaTime;
-                _rigidbody.AddForce(movement, ForceMode.Force);
+                // 加速 - 使用VelocityChange来获得更直接的控制
+                Vector3 targetVelocity = moveDirection * maxSpeed;
+                Vector3 velocityChange = (targetVelocity - new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z));
+
+                velocityChange.x = Mathf.Clamp(velocityChange.x, -f_acceleration, f_acceleration);
+                velocityChange.z = Mathf.Clamp(velocityChange.z, -f_acceleration, f_acceleration);
+                velocityChange.y = 0;
+
+                _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+            }
+            else
+            {
+                // 没有输入时应用减速
+                Vector3 horizontalVel = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+                if (horizontalVel.magnitude > 0.1f)
+                {
+                    Vector3 decelerationForce = -horizontalVel.normalized * f_deceleration * Time.fixedDeltaTime;
+                    _rigidbody.AddForce(decelerationForce, ForceMode.VelocityChange);
+                }
+                else
+                {
+                    // 速度很小时直接停止
+                    _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
+                }
             }
 
+            // 限制水平速度
             Vector3 flatVel = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
             if (flatVel.magnitude > maxSpeed)
             {
@@ -149,12 +171,12 @@ public class Movement : MonoBehaviour
 
             if (isTryingToMove)
             {
-                Vector3 movement = GetMovementInput() * f_acceleration * f_airControlMultiplier * Time.deltaTime;
+                Vector3 movement = GetMovementInput() * f_acceleration * f_airControlMultiplier * Time.fixedDeltaTime;
                 _rigidbody.AddForce(movement, ForceMode.Force);
             }
 
             // 应用重力
-            _rigidbody.AddForce(Vector3.down * f_freeFallAcceleration * Time.deltaTime, ForceMode.Force);
+            _rigidbody.AddForce(Vector3.down * f_freeFallAcceleration * Time.fixedDeltaTime, ForceMode.Force);
 
             // 限制最大下落速度
             if (_rigidbody.velocity.y < -f_maxFallSpeed)
@@ -164,25 +186,22 @@ public class Movement : MonoBehaviour
 
             // 更新Kayote时间
             if (_kayoteTime > 0)
-                _kayoteTime -= Time.deltaTime;
+                _kayoteTime -= Time.fixedDeltaTime;
         }
     }
 
     private void HandleJumpState()
     {
-        // 如果正在跳跃但速度已经开始下降，且已经过了最小跳跃时间，允许结束跳跃状态
         if (_isJumping && _rigidbody.velocity.y <= 0 && Time.time - _jumpStartTime > 0.3f)
         {
-            // 这里不直接设置_isJumping = false，因为地面检测会处理这个
+            // 跳跃状态由地面检测处理
         }
     }
 
     private bool CheckIfGrounded()
     {
-        // 使用多个射线检测点提高检测精度
         bool groundCheck = Physics.Raycast(f_feet.position, Vector3.down, f_rayDistance, f_groundLM);
 
-        // 额外的检测点
         float checkOffset = 0.2f;
         bool frontCheck = Physics.Raycast(f_feet.position + f_orientation.forward * checkOffset, Vector3.down, f_rayDistance, f_groundLM);
         bool backCheck = Physics.Raycast(f_feet.position - f_orientation.forward * checkOffset, Vector3.down, f_rayDistance, f_groundLM);
@@ -194,8 +213,7 @@ public class Movement : MonoBehaviour
 
     private Vector3 GetMovementInput()
     {
-        Vector2 input = _controls.PlayerInputs.Move.ReadValue<Vector2>();
-        return f_orientation.forward * input.y + f_orientation.right * input.x;
+        return f_orientation.forward * _currentMoveInput.y + f_orientation.right * _currentMoveInput.x;
     }
 
     private void Jump(InputAction.CallbackContext context)
@@ -208,7 +226,6 @@ public class Movement : MonoBehaviour
 
         if (_hasDoubleJump)
         {
-            // 双跳时保留部分水平动量
             Vector3 horizontalMomentum = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z) * 0.5f;
             Vector3 jumpForce = horizontalMomentum + Vector3.up * f_jumpHeight;
             PerformJump(jumpForce);
@@ -218,7 +235,6 @@ public class Movement : MonoBehaviour
 
     private void PerformJump(Vector3 jumpForce)
     {
-        // 确保y速度至少为0，避免向下跳跃
         if (_rigidbody.velocity.y < 0)
         {
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
@@ -227,12 +243,11 @@ public class Movement : MonoBehaviour
         _rigidbody.AddForce(jumpForce, ForceMode.Impulse);
         _isJumping = true;
         _jumpStartTime = Time.time;
-        _kayoteTime = 0; // 使用Kayote时间后重置
+        _kayoteTime = 0;
     }
 
     private void OnDrawGizmos()
     {
-        // 可视化地面检测射线
         if (f_feet != null)
         {
             Gizmos.color = Color.red;
@@ -244,5 +259,10 @@ public class Movement : MonoBehaviour
             Gizmos.DrawRay(f_feet.position - f_orientation.right * checkOffset, Vector3.down * f_rayDistance);
             Gizmos.DrawRay(f_feet.position + f_orientation.right * checkOffset, Vector3.down * f_rayDistance);
         }
+    }
+
+    private void OnDisable()
+    {
+        _controls?.Disable();
     }
 }
